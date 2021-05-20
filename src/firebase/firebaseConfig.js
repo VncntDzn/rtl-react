@@ -3,12 +3,12 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDXM3uQRvZbxIy8K1D0KM81of9JHH0HVU8",
-    authDomain: "rtl-react.firebaseapp.com",
-    projectId: "rtl-react",
-    storageBucket: "rtl-react.appspot.com",
-    messagingSenderId: "591999720825",
-    appId: "1:591999720825:web:25649cf65332564f4aa3a8"
+    apiKey: "AIzaSyCIBCeNZVCRDFyWPM6dYvhv-DvfNJaiVrg",
+    authDomain: "rtl-react-6a3d2.firebaseapp.com",
+    projectId: "rtl-react-6a3d2",
+    storageBucket: "rtl-react-6a3d2.appspot.com",
+    messagingSenderId: "139603808935",
+    appId: "1:139603808935:web:549852151de6a6cdc74182"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

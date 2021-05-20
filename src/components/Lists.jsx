@@ -1,40 +1,57 @@
-import { useState, useEffect } from 'react';
 import { firestore } from 'firebase/firebaseConfig';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styles from 'theme/main.module.scss';
+import useTodo from 'custom-hooks/useTodo';
+import Dialog from './Dialog';
 
 const Lists = (props) => {
-  const [lists, setLists] = useState([]);
-  useEffect(() => {
-    // unsubscribe to onSnapshot
-    return firestore
-      .collection('todo')
-      .orderBy('timestamp', 'desc')
-      .onSnapshot((snapshot) => {
-        let todos = [];
-        snapshot.forEach((doc) =>
-          todos.push({ docID: doc.id, data: doc.data() })
-        );
-        setLists(todos);
-      });
-  }, [lists]);
+  const [open, setOpen] = useState(false);
+  const [documentID, setDocumentID] = useState(null);
+  const { lists } = useTodo();
+  const handleEdit = (e, docID) => {
+    setOpen(!open);
+    setDocumentID(docID);
+  };
+
+  const handleDelete = async (e, docID) => {
+    try {
+      await firestore.collection('todo').doc(docID).delete();
+      return 'success';
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={styles.lists}>
-      {lists?.map(({ data }, index) => (
+      {lists?.map(({ data, docID }, index) => (
         <div key={index} className={styles.card}>
           <h3>{data.todo}</h3>
           <div>
-            <button className={styles.card__button__edit}>EDIT</button>
+            <button
+              onClick={(e) => handleEdit(e, docID)}
+              className={styles.card__button__edit}
+            >
+              EDIT
+            </button>
             &nbsp;
-            <button className={styles.card__button__delete}>DELETE</button>
+            <button
+              onClick={(e) => handleDelete(e, docID)}
+              className={styles.card__button__delete}
+            >
+              DELETE
+            </button>
           </div>
         </div>
       ))}
+
+      <Dialog
+        documentID={documentID}
+        open={open}
+        onClose={() => setOpen(!open)}
+      />
     </div>
   );
 };
-
-Lists.propTypes = {};
 
 export default Lists;
