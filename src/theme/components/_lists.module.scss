@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.lists {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    width: 15rem;
+    height: 15rem;
+    background-color: white;
+    margin: 1rem;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    &__button {
+        font-weight: 500;
+
+        &__edit {
+            padding: 5px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            width: 5rem;
+            background-color: green;
+        }
+
+        &__delete {
+            padding: 5px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            width: 5rem;
+            background-color: red;
+        }
+
+        &:hover {
+            transition: width 2s, height 4s;
+            font-weight: 700;
+        }
+    }
+
+}

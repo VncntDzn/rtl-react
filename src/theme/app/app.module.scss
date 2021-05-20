@@ -1,0 +1,12 @@
+.container {
+    height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(45deg, #ddf593 25%, #07b866 25%, #07b866 50%, #ddf593 50%, #ddf593 75%, #07b866 75%, #07b866 100%);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
