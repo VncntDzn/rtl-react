@@ -1,11 +1,23 @@
 import { useState } from 'react';
 import styles from 'theme/main.module.scss';
+import { firestore } from 'firebase/firebaseConfig';
+import firebase from 'firebase/firebaseConfig';
 
 const InputField = (props) => {
   const [todo, setTodo] = useState(null);
-  const submitTodo = (e) => {
+
+  const submitTodo = async (e) => {
     e.preventDefault();
-    console.log(todo);
+    try {
+      await firestore.collection('todo').add({
+        todo,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      alert('success');
+    } catch (error) {
+      alert(error);
+    }
+    setTodo('');
   };
   return (
     <form
@@ -16,6 +28,7 @@ const InputField = (props) => {
         className={styles.inputFieldContainer__input}
         placeholder='Please enter a todo.'
         required
+        value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
       <button className={styles.inputFieldContainer__btn} type='submit'>
