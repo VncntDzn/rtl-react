@@ -4,7 +4,7 @@ import { firestore } from 'firebase/firebaseConfig';
 import firebase from 'firebase/firebaseConfig';
 
 const InputField = (props) => {
-  const [todo, setTodo] = useState(null);
+  const [todo, setTodo] = useState('');
 
   const submitTodo = async (e) => {
     e.preventDefault();
@@ -13,7 +13,6 @@ const InputField = (props) => {
         todo,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
-      alert('success');
     } catch (error) {
       alert(error);
     }
