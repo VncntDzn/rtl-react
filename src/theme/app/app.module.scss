@@ -1,0 +1,13 @@
+.container {
+    border: 3px solid red;
+    height: 50vw;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid greenyellow;
+
+}
