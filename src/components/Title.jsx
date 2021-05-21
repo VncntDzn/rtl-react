@@ -1,13 +1,9 @@
-import React from 'react';
-
-const Title = (props) => {
+const Title = () => {
   return (
-    <div>
-      <h1>MY RTL PROJECT</h1>
-    </div>
+    <>
+      <h1 aria-label='title'>MY RTL PROJECT</h1>
+    </>
   );
 };
-
-Title.propTypes = {};
 
 export default Title;
